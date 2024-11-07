@@ -27,7 +27,7 @@ typst_sources_to_compile = [el for el in sources_to_compile if ".typ" in el]
 # Make dirs
 build_dir = "{}/build/".format(repo_dir)
 for source in tex_sources_to_compile+typst_sources_to_compile:
-    os.makedirs(os.path.dirname(source))
+    os.makedirs(os.path.dirname(source), exist_ok = True)
 #if os.path.exists(build_dir):
 #    shutil.rmtree(build_dir)
 #os.makedirs("{}candidatura/documenti_interni/verbali".format(build_dir))
