@@ -26,13 +26,15 @@ typst_sources_to_compile = [el for el in sources_to_compile if ".typ" in el]
 
 # Make dirs
 build_dir = "{}/build/".format(repo_dir)
-if os.path.exists(build_dir):
-    shutil.rmtree(build_dir)
-os.makedirs("{}candidatura/documenti_interni/verbali".format(build_dir))
-os.makedirs("{}candidatura/documenti_esterni/verbali".format(build_dir))
-os.makedirs("{}candidatura/documenti_esterni/presentazione_candidatura".format(build_dir))
-os.makedirs("{}RTB/documenti_interni/verbali".format(build_dir))
-os.makedirs("{}RTB/documenti_esterni/verbali".format(build_dir))
+for source in tex_sources_to_compile+typst_sources_to_compile:
+    os.makedirs(os.path.dirname(source))
+#if os.path.exists(build_dir):
+#    shutil.rmtree(build_dir)
+#os.makedirs("{}candidatura/documenti_interni/verbali".format(build_dir))
+#os.makedirs("{}candidatura/documenti_esterni/verbali".format(build_dir))
+#os.makedirs("{}candidatura/documenti_esterni/presentazione_candidatura".format(build_dir))
+#os.makedirs("{}RTB/documenti_interni/verbali".format(build_dir))
+#os.makedirs("{}RTB/documenti_esterni/verbali".format(build_dir))
 
 # Moves signed pdfs in build
 sources = glob.glob("{}/**/*.pdf".format(repo_dir), recursive=True)
