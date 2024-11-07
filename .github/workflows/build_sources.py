@@ -42,17 +42,17 @@ for pdf in pdfs:
     shutil.copyfile(pdf, pdf_output_dir)
 
 # Compile tex files
-#for source in tex_sources_to_compile:
-#    output_dir = os.path.dirname(source).replace("docs", "docs/build").replace("docs/build", "docs", 1)
-#    res = subprocess.run(["pdflatex", "-output-directory", output_dir, "-halt-on-error", source], cwd=os.path.dirname(source))
-#    subprocess.run(["pdflatex", "-output-directory", output_dir, "-halt-on-error", source], cwd=os.path.dirname(source))
-#    if res.returncode != 0:
-#        exit(1)
+for source in tex_sources_to_compile:
+    output_dir = os.path.dirname(source).replace("docs", "docs/build").replace("docs/build", "docs", 1)
+    res = subprocess.run(["pdflatex", "-output-directory", output_dir, "-halt-on-error", source], cwd=os.path.dirname(source))
+    subprocess.run(["pdflatex", "-output-directory", output_dir, "-halt-on-error", source], cwd=os.path.dirname(source))
+    if res.returncode != 0:
+        exit(1)
 
 # Compile typst files
 print(typst_sources_to_compile)
 for source in typst_sources_to_compile:
     output_dir = os.path.dirname(source).replace("docs", "docs/build").replace("docs/build", "docs", 1)
-    res = subprocess.run(["typst", "compile", "--root", repo_dir, source], cwd=os.path.dirname(source))
+    res = subprocess.run(["typst", "compile", "--root", repo_dir, source, output_dir], cwd=os.path.dirname(source))
     if res.returncode != 0:
         exit(1)
