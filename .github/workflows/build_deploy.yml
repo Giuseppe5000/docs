@@ -23,7 +23,7 @@ jobs:
         wget $(curl -s https://api.github.com/repos/typst/typst/releases/latest | grep browser_download_url |grep -E "x86.*linux" | cut -d '"' -f 4)
         sudo tar xf typst-x86_64-unknown-linux-musl.tar.xz -C /bin
     - name: Build sources
-      run: python .github/workflows/build_latex.py
+      run: python .github/workflows/build_sources.py
     - name: Build html
       run: python .github/workflows/build_html.py
     - name: Upload artifacts
