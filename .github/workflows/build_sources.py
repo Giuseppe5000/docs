@@ -28,7 +28,7 @@ typst_sources_to_compile = [el for el in sources_to_compile if ".typ" in el]
 # Make dirs in /build
 for source in tex_sources_to_compile+typst_sources_to_compile+pdfs:
     dir = os.path.dirname(source).replace("docs", "docs/build").replace("docs/build", "docs", 1)
-    os.makedirs(os.path.dirname(source), exist_ok = True)
+    os.makedirs(dir, exist_ok = True)
 
 # Moves signed pdfs in build
 pdfs = [source for source in pdfs if "build" not in source]
