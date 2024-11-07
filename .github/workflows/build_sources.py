@@ -6,7 +6,7 @@ import shutil
 repo_dir = os.environ['GITHUB_WORKSPACE']
 
 tex_sources = glob.glob("{}/**/*.tex".format(repo_dir), recursive=True)
-typst_sources += glob.glob("{}/**/*.typ".format(repo_dir), recursive=True)
+typst_sources = glob.glob("{}/**/*.typ".format(repo_dir), recursive=True)
 
 sources = tex_sources + typst_sources
 
