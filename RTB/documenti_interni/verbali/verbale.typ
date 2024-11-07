@@ -1,5 +1,5 @@
-#import "template.typ": verbale
-#import "template.typ": team
+#import "/template/template.typ": verbale
+#import "/template/template.typ": team
 
 #show: verbale.with(
   title: "Documento del 00/00/0000",

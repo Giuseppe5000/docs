@@ -1,7 +1,7 @@
 #let g = (
      name: "Tech Minds",
      mail: "techminds.unipd@gmail.com",
-     logo: "logo.png",
+     logo: "../assets/logo_upscaled.png",
 )
 
 #let team = (
@@ -53,13 +53,11 @@
 
      text("Changelog", weight: "bold")
 
-     align(center+horizon,
-       table(
-       columns: 5,
-       align: center,
-       table.header([*Versione*],[*Data*],[*Descrizione*],[*Autore*],[*Verificatore*]),
-       ..changelog)
-     )
+     table(
+     columns: 5,
+     align: center,
+     table.header([*Versione*],[*Data*],[*Descrizione*],[*Autore*],[*Verificatore*]),
+     ..changelog)
     
      outline(title: "Indice", indent: true)
 
