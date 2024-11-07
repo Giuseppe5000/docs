@@ -53,6 +53,6 @@ for source in tex_sources_to_compile:
 print(typst_sources_to_compile)
 for source in typst_sources_to_compile:
     output_dir = os.path.dirname(source).replace("docs", "docs/build").replace("docs/build", "docs", 1)
-    res = subprocess.run(["typst", "compile", "--root", repo_dir, source, output_dir+os.path.basename(source).replace(".typ",".pdf")], cwd=os.path.dirname(source))
+    res = subprocess.run(["typst", "compile", "--root", repo_dir, source, "{}/{}".format(output_dir,os.path.basename(source).replace(".typ",".pdf"))])
     if res.returncode != 0:
         exit(1)
