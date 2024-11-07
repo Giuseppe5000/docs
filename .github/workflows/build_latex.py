@@ -5,7 +5,10 @@ import shutil
 
 repo_dir = os.environ['GITHUB_WORKSPACE']
 
-sources = glob.glob("{}/**/*.tex".format(repo_dir), recursive=True)
+tex_sources = glob.glob("{}/**/*.tex".format(repo_dir), recursive=True)
+typst_sources += glob.glob("{}/**/*.typ".format(repo_dir), recursive=True)
+
+sources = tex_sources + typst_sources
 
 # Blacklist
 sources_to_compile = []
@@ -18,6 +21,9 @@ for source in sources:
     if add:
         sources_to_compile.append(source)
 
+tex_sources_to_compile = [el for el in sources_to_compile if ".tex" in el]
+typst_sources_to_compile = [el for el in sources_to_compile if ".typ" in el]
+
 # Make dirs
 build_dir = "{}/build/".format(repo_dir)
 if os.path.exists(build_dir):
@@ -25,6 +31,8 @@ if os.path.exists(build_dir):
 os.makedirs("{}candidatura/documenti_interni/verbali".format(build_dir))
 os.makedirs("{}candidatura/documenti_esterni/verbali".format(build_dir))
 os.makedirs("{}candidatura/documenti_esterni/presentazione_candidatura".format(build_dir))
+os.makedirs("{}RTB/documenti_interni/verbali".format(build_dir))
+os.makedirs("{}RTB/documenti_esterni/verbali".format(build_dir))
 
 # Moves signed pdfs in build
 sources = glob.glob("{}/**/*.pdf".format(repo_dir), recursive=True)
@@ -34,7 +42,7 @@ for pdf in pdfs:
     shutil.copyfile(pdf, pdf_output_dir)
 
 # Compile tex files
-for source in sources_to_compile:
+for source in tex_sources_to_compile:
     output_dir = os.path.dirname(source).replace("docs", "docs/build").replace("docs/build", "docs", 1)
     res = subprocess.run(["pdflatex", "-output-directory", output_dir, "-halt-on-error", source], cwd=os.path.dirname(source))
     subprocess.run(["pdflatex", "-output-directory", output_dir, "-halt-on-error", source], cwd=os.path.dirname(source))
