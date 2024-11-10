@@ -1,4 +1,4 @@
-# Documentazione
+# Documentazione1
 Questa repo contiene la documentazione del gruppo Tech Minds del progetto di SWE 24/25.
 ## Componenti del gruppo
 | Nome       | Cognome   | GitHub                                           |
