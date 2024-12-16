@@ -167,7 +167,7 @@ if __name__ == "__main__":
     for source in sources_to_check:
         source_text = get_file_text(source)
         source_text = filter_file(source, source_text)
-        fail_found = check(source, source_text, termini, termini_contenuti) || fail_found
+        fail_found = check(source, source_text, termini, termini_contenuti) | fail_found
 
     # Ritorna codice di uscita 1 se ci sono fallimenti
     if fail_found:
