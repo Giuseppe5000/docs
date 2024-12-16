@@ -82,7 +82,7 @@ def check(f, text, termini_glossario, termini_contenuti):
                     print("Text snippet:\n====\n{}\n====".format(text[x[0]-40:x[1]+40]), file=sys.stderr)
                     return_value = 1  # Traccia il fallimento
       
-      return return_value
+    return return_value
 
 def filter_file(f, text):
     # Resolve include and discard file header
