@@ -145,7 +145,7 @@ if __name__ == "__main__":
     termini = get_from_glossario(FILE_GLOSSARIO)
     termini_contenuti = get_termini_contenuti_in_altri(termini)
     sources_to_check = [] # File da controllare
-    fail_found = 0  # Usa una lista per permettere la modifica all'interno delle funzioni
+    fail_found = 0  # Ritorna 0 se non si sono verificati errori
 
     if len(sys.argv) == 1:
         sources = glob.glob("{}/**/*.typ".format(REPO_DIR), recursive=True)
